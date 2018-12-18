@@ -199,7 +199,10 @@
                         encodedContent = response.content,
                         decodedContent = decodeURIComponent(escape(window.atob(encodedContent)));
 
-                    const dataToAppend = `- [${activeTabTitle}](${activeTabUrl}) \n`;
+                    const title = activeTabTitle.split(":")[0];
+                    const desc = activeTabTitle.substring(activeTabTitle.indexOf(":"));
+                    const dataToAppend = `- [${title}](${activeTabUrl}) ${desc}\n`;
+                    // const dataToAppend = `- [${activeTabTitle}](${activeTabUrl}) \n`;
 
                     // append data in the front
                     decodedContent = Repo.appendDataBefore(dataToAppend, decodedContent);
